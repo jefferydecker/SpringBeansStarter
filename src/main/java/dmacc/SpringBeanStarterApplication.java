@@ -20,12 +20,6 @@ public class SpringBeanStarterApplication implements CommandLineRunner{
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBeanStarterApplication.class, args);
 		
-//		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
-//		
-//		Contact c = appContext.getBean("contact", Contact.class);
-//		
-//		System.out.println(c.toString());
-		
 	}
 
 	@Autowired
@@ -34,12 +28,9 @@ public class SpringBeanStarterApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
-
-		//Using an existing bean
 		Contact c = appContext.getBean("contact", Contact.class);
-		c.setRelationship(“best friend”);
+		c.setRelationship("best friend");
 		repo.save(c);
 		
 		//Creating an object to use – not managed by Spring
@@ -54,7 +45,5 @@ public class SpringBeanStarterApplication implements CommandLineRunner{
 		}
 		
 		((AnnotationConfigApplicationContext) appContext).close();
-
 	}
-
 }
